@@ -199,10 +199,6 @@ const Contests = () => {
         minHeight: "100vh",
         py: 6,
         px: { xs: 2, sm: 5 },
-        // background: `linear-gradient(180deg,
-        //   ${theme.palette.background.paper} 0%,
-        //   ${alpha(theme.palette.primary.main, 0.03)} 50%,
-        //   ${theme.palette.background.paper} 100%)`,
         transition: "width 0.5s ease",
       }}
     >
@@ -269,7 +265,7 @@ const Contests = () => {
             }}
           >
             {contests.length === 0 ? (
-              <Grid size={{ xs: 12 }}>
+              <Grid item xs={12}>
                 <Box
                   sx={{
                     mt: 2,
@@ -299,7 +295,9 @@ const Contests = () => {
               contests.map((contest, idx) => (
                 <Grid
                   key={contest.id}
-                  size={{ sm: 12, md: 6 }}
+                  item
+                  xs={12}
+                  md={6}
                   display="flex"
                   justifyContent="center"
                   sx={{
@@ -360,28 +358,37 @@ const Contests = () => {
           >
             <Button
               variant="outlined"
-              startIcon={<AddIcon />}
               onClick={() => window.open('https://ssc.sjtu.edu.cn/dashboard/9030a6d6', '_blank')}
               sx={{
                 borderRadius: 3,
-                px: 3,
-                py: 1.5,
-                fontSize: '1rem',
+                px: 2,
+                py: 0.7,
+                fontSize: '0.95rem',
                 fontWeight: 500,
-                borderWidth: 2,
-                borderColor: theme.palette.primary.main,
                 color: theme.palette.primary.main,
-                transition: 'all 0.3s ease',
+                border: `1px solid ${theme.palette.primary.main}`,
+                background: 'none',
+                transition: 'all 0.2s',
+                minWidth: 0,
                 '&:hover': {
-                  borderWidth: 2,
-                  borderColor: theme.palette.primary.dark,
-                  backgroundColor: alpha(theme.palette.primary.main, 0.08),
-                  transform: 'translateY(-2px)',
-                  boxShadow: `0 4px 12px ${alpha(theme.palette.primary.main, 0.25)}`,
+                  background: alpha(theme.palette.primary.main, 0.08),
                 },
+                gap: 0.5,
               }}
+              startIcon={
+                <AddIcon
+                  sx={{
+                    fontSize: 28,
+                    color: theme.palette.primary.main,
+                    border: `1px solid ${theme.palette.primary.main}`,
+                    borderRadius: '50%',
+                    p: 0.4,
+                    boxShadow: 'none',
+                  }}
+                />
+              }
             >
-              没有看到想找的比赛？欢迎为我们提供！
+              没有找到想要的比赛？点此补充！
             </Button>
           </Box>
         </>
